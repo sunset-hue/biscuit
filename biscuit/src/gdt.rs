@@ -12,7 +12,7 @@ struct Flags {
 
 struct Access {
     // required bits to set are gonna be automatically set in function
-    privilege_level: u8, // most this can go up to is 3, so going to add upper bound
+    privilege_level: u8,
     descriptor_type: bool,
     executable: bool,
     dc: bool,
@@ -23,6 +23,12 @@ struct Access {
 
 // long mode so no base/limits required, so hardcoded bases and limits are going to be used
 
-fn encode_segment(flags: Flags,access: Access) {
-    
+fn write_segment(address: u64,flags: Flags,access: Access) {
+   if offset == 0 {
+    return;
+   }
+   let addr_ptr = address as *mut u64;
+   // pointer for memory address of segment descriptor in GDT
+   // need to figure out how the hell to actually set bits inside entry (i'm confused)
+
 }
