@@ -1,34 +1,18 @@
-// defining gdt structures and a function to make segments
+
 struct TableDescriptor {
     size: u16,
     location: u64
 }
 
-struct Flags {
-    granularity: bool,
-    db: bool,
-    long_mode: bool
+fn write_all_non_tss_segments(gdtr: TableDescriptor) {
+    let mut address = gdtr.location as *mut u64;
+    unsafe {    
+        address.offset(0 as isize) = 0;
+        address.offset(8 as isize) = 0xfffff + 0x9A + 0xA; //this is done to simplify the process of making segments
+        address.offset(16 as isize) = 0xfffff + 0x92 + 0xC;
+        address.offset(24 as isize) = 0xfffff + 0xFA + 0xA;
+        address.offset(32 as isize) = 0xfffff + 0xF2 + 0xC;
+    }
 }
 
-struct Access {
-    // required bits to set are gonna be automatically set in function
-    privilege_level: u8,
-    descriptor_type: bool,
-    executable: bool,
-    dc: bool,
-    rw: bool,
-    // accessed bit is auto set to 1
-    // present bit is auto set to 1
-}
 
-// long mode so no base/limits required, so hardcoded bases and limits are going to be used
-
-fn write_segment(address: u64,flags: Flags,access: Access) {
-   if offset == 0 {
-    return;
-   }
-   let addr_ptr = address as *mut u64;
-   // pointer for memory address of segment descriptor in GDT
-   // need to figure out how the hell to actually set bits inside entry (i'm confused)
-
-}
