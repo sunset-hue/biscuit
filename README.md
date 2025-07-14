@@ -6,6 +6,5 @@ Current Features
 * print a hardcoded value to the screen using VGA
 
 Planned
-* VGA driver
 * GDT
 * Interrupts
