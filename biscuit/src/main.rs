@@ -2,7 +2,7 @@
 #![no_main]
 #![feature(global_asm)]
 mod gdt;
-mod tss;
+mod idt;
 
 extern "C" {
     fn setGdt(limit:u64,base:u64);
