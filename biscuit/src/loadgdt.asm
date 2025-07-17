@@ -3,7 +3,7 @@
 
 
 gdtr DW 0;
-     DD 0;
+     DQ 0;
 ;; this is from the gdt tutorial, will fix if bugs
 
 setGdt:
