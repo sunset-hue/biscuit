@@ -13,9 +13,11 @@ fn write_idt_entries(address: u64) {
     let address = address as *mut u64;
     let gate_descriptor = 0x0;
     
-    for i in 0..255 {
-        unsafe {
-            address.offset(i*16 as isize) = None
-        }
-    } 
+    unsafe {
+        for i in 0..255 {
+                if i != 0x0 {
+                    
+            }
+        } 
+    }
 }
