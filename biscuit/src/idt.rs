@@ -16,8 +16,9 @@ fn write_idt_entries(address: u64) {
     unsafe {
         for i in 0..255 {
                 if i != 0x0 {
-                    
+                    None
             }
         } 
     }
+    
 }

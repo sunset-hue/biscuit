@@ -3,6 +3,7 @@
 #![feature(global_asm)]
 mod gdt;
 mod idt;
+mod framebuffer;
 
 extern "C" {
     fn setGdt(limit:u64,base:u64);
